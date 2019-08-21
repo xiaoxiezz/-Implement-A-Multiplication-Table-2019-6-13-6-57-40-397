@@ -1,15 +1,6 @@
 const add = require('../main');
 const createMultilyTable = require('../main');
 
-it ('should add two numbers', () => {
-    expect(add(2, 3)).toBe(5);
-});
-
 it ('should require two numbers multily table', () => {
-    let start = 2;
-    let end = 4;
-    const result = createMultilyTable(start, end);
-    expect(result[0][0]).toBe("2*2=4");
-    expect(result[1][0]).toBe("2*3=6");
-    expect(result[2][0]).toBe("2*4=8");
+    expect(createMultilyTable(2, 4)).toBe("2*2=4\r\n2*3=6 3*3=9\r\n2*4=8 3*4=12 4*4=16\r\n");
 });

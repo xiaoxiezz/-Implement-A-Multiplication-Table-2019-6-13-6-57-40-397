@@ -1,48 +1,65 @@
-
-
-function compare(start, end){
-    if(start < end){
-        return -1;
-    }else if(start == end){
-        return 0;
-    }else{
-        return 1;
+// createMultilyTable，输出数组形式的table
+function createMultilyTable(start, end) {
+    if (!isValid) {
+        return null;
+    }
+    var multilyTable = multiplyCalculation(start, end);
+    // console.log(multilyTable);
+    return multilyTable;
+}
+// 是否合法
+function isValid(start, end) {
+    if (!isNumber(start, end)) {
+        return null
+    } else if (!isInteger(start, end)) {
+        return null
+    } else if (!isRangeNumber(start) || !isRangeNumber(end)) {
+        return null;
+    } else {
+        return true;
     }
 }
 
-function isRangeNumber(number){
-    if(number >=1 && number <=1000){
+//是否为数字
+function isNumber(start, end) {
+    if (typeof (start) == 'number' && typeof (end) == 'number') {
+        return true;
+    } else {
+        return false;
+    }
+}
+// 是否为整数
+function isInteger(start, end) {
+    if ((start % 1 === 0) && (end % 1 === 0)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+// 是否在范围内
+function isRangeNumber(number) {
+    if (number >= 1 && number <= 1000) {
         return true;
     }
     return false;
 }
-
-function calculate(start, end){
-
-    var result = new Array();
-    for(let i = start; i < end + 1; i++){
-        let list = new Array();
-        for(let j = start; j <= i; j++){
-            let tmpString = j + "*" + i + "=" + i * j;
-            list.push(tmpString);
+//乘法计算
+function multiplyCalculation(start, end) {
+    var result = [];
+    for (let i = start; i <= end; i++) {
+        for (let j = start; j <= i; j++) {
+            result += j + "*" + i + "=" + i*j;
+            if (i !== j) {
+                result += " ";
+            }
         }
-        result.push(list);
+        result += "\r\n";
     }
+    // console.log(result);
     return result;
 }
 
-function createMultilyTable(start, end){
-    if(compare(start, end) > 0){
-        return null
-    }
-    if(!isRangeNumber(start) || !isRangeNumber(end)){
-        return null;
-    }
-    var multilyTable = calculate(start, end);
 
-    return multilyTable;
-}
-
-
+// createMultilyTable(2, 4);
 
 module.exports = createMultilyTable;
