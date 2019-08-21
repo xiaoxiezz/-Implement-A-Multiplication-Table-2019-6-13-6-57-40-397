@@ -1,11 +1,11 @@
-// createMultilyTable，输出数组形式的table
-function createMultilyTable(start, end) {
+// createMultiplyTable
+function createMultiplyTable(start, end) {
     if (!isValid) {
         return null;
     }
-    var multilyTable = multiplyCalculation(start, end);
-    // console.log(multilyTable);
-    return multilyTable;
+    var multiplyTable = multiplyCalculation(start, end);
+    // console.log(multiplyTable);
+    return multiplyTable;
 }
 // 是否合法
 function isValid(start, end) {
@@ -60,6 +60,6 @@ function multiplyCalculation(start, end) {
 }
 
 
-// createMultilyTable(2, 4);
+// createMultiplyTable(2, 4);
 
-module.exports = createMultilyTable;
+module.exports = createMultiplyTable;
