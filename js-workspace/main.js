@@ -71,7 +71,7 @@ function getLine(start, end) {
     let result='';
     const separate = start === end ? '' : '\t';
     for (let i = start; i <= end; i++) {
-        return result += getItem(start, end);
+        return result += getItem(start, i);
     }
     
 }
