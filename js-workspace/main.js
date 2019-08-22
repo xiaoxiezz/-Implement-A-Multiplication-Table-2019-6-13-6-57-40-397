@@ -3,7 +3,7 @@ function createMultiplyTable(start, end) {
     if (!isValid) {
         return null;
     }
-    var multiplyTable = multiplyCalculation(start, end);
+    var multiplyTable = getExpression(start, end);
     // console.log(multiplyTable);
     return multiplyTable;
 }
@@ -44,22 +44,42 @@ function isRangeNumber(number) {
     return false;
 }
 //乘法计算
-function multiplyCalculation(start, end) {
-    var result = [];
-    for (let i = start; i <= end; i++) {
-        for (let j = start; j <= i; j++) {
-            result += j + "*" + i + "=" + i*j;
-            if (i !== j) {
-                result += " ";
-            }
-        }
-        result += "\r\n";
+// function multiplyCalculation(start, end) {
+//     var result = [];
+//     for (let i = start; i <= end; i++) {
+//         for (let j = start; j <= i; j++) {
+//             result += j + "*" + i + "=" + i * j;
+//             if (i !== j) {
+//                 result += " ";
+//             }
+//         }
+//         result += "\r\n";
+//     }
+//     // console.log(result);
+//     return result;
+// }
+
+function getExpression(start, end) {
+    let result='';
+    const separate = end === start ? '' : '\n';
+    for (let index = start; index <= end; index++) {
+        return result += getLine(start, index);
     }
-    // console.log(result);
-    return result;
+
+}
+function getLine(start, end) {
+    let result='';
+    const separate = start === end ? '' : '\t';
+    for (let i = start; i <= end; i++) {
+        return result += getItem(start, end);
+    }
+    
+}
+function getItem(first, second) {
+    return `${first}*${second}=${first * second}`;
 }
 
 
-// createMultiplyTable(2, 4);
+createMultiplyTable(2, 4);
 
-module.exports = createMultiplyTable;
+// module.exports = createMultiplyTable;
